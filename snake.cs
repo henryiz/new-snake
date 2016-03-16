@@ -18,22 +18,27 @@ namespace Snake
 			Console.Write (sym);
 		}
 
+		public Point(){
+			Console.WriteLine ("Create a new dot");
+		}
+		public Point(int _x, int _y, char _sym){
+			x = _x;
+			y = _y;
+			sym = _sym;
+		}
+
 	}
 
 	class Program
 	{
 		static void Main()
 		{
-			Point prop = new Point();
-			prop.x = 1;
-			prop.y = 3;
-			prop.sym = '*';
+			Point prop = new Point(1, 3, '*');
+ 
 			prop.Draw ();
 
-			Point prop2 = new Point();
-			prop2.x = 8;
-			prop2.y = 21;
-			prop2.sym = '#';
+			Point prop2 = new Point(4, 5, '#');
+ 
 			prop2.Draw ();
 
 			Console.ReadLine ();

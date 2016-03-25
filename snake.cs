@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Snake
 {
+	/// <summary>
+	/// Class Point
+	/// </summary>
 	public class Point
 	{
 		public int x;
@@ -28,6 +31,10 @@ namespace Snake
 		}
 
 	}
+
+	/// <summary>
+	/// Class Program
+	/// </summary>
 
 	class Program
 	{

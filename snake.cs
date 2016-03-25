@@ -41,17 +41,28 @@ namespace Snake
 		static void Main()
 		{
 			Point prop = new Point(1, 3, '*');
- 
-			prop.Draw ();
 
 			Point prop2 = new Point(4, 5, '#');
- 
-			prop2.Draw ();
+
+			List<int> lst = new List<int>(); 
+
+			lst.Add (0);
+			lst.Add (1);
+			lst.Add (2);
+			lst.Add (3);
+			lst.Add (4);
+			lst.Add (5);
+
+			foreach(int i in lst){
+			
+				Console.WriteLine (i);
+			
+			}
 
 			Console.ReadLine ();
 
 
 		}
-
+		 
 }
 }

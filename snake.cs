@@ -6,6 +6,62 @@ using System.Threading.Tasks;
 
 namespace Snake
 {
+
+	/// <summary>
+	/// Class VerticallLine.
+	/// </summary>
+	public class VerticalLine
+	{
+		List<Point> plist;
+		public VerticalLine(int yLeft, int yRight, int x, char sym){    
+
+			plist = new List<Point>();
+			for(int y = yLeft; y<=yRight; y++){
+
+				Point p = new Point (x, y, sym);
+				plist.Add (p);
+			}
+
+		}
+		public void Drow(){
+
+			foreach(Point p in plist){
+
+				p.Draw ();
+
+			}
+
+		}
+	}
+
+	/// <summary>
+	/// Class HorizontalLine
+	/// </summary>
+	public class HorizontalLine
+	{
+		List<Point> plist;
+		public HorizontalLine(int xLeft, int xRight, int y, char sym){
+		
+			plist = new List<Point>();
+			for(int x = xLeft; x<=xRight; x++){
+
+				Point p = new Point (x, y, sym);
+				plist.Add (p);
+			}
+			
+		}
+		public void Drow(){
+		
+			foreach(Point p in plist){
+
+				p.Draw ();
+
+			}
+		
+		}
+	}
+
+
 	/// <summary>
 	/// Class Point
 	/// </summary>
@@ -40,24 +96,13 @@ namespace Snake
 	{
 		static void Main()
 		{
-			Point prop = new Point(1, 3, '*');
 
-			Point prop2 = new Point(4, 5, '#');
+			HorizontalLine line = new HorizontalLine (5, 10, 25, '+');
+			line.Drow ();
+		 
+			VerticalLine line2 = new VerticalLine (5, 10, 0, '+');
+			line2.Drow ();
 
-			List<int> lst = new List<int>(); 
-
-			lst.Add (0);
-			lst.Add (1);
-			lst.Add (2);
-			lst.Add (3);
-			lst.Add (4);
-			lst.Add (5);
-
-			foreach(int i in lst){
-			
-				Console.WriteLine (i);
-			
-			}
 
 			Console.ReadLine ();
 

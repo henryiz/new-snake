@@ -20,7 +20,7 @@ namespace Snake
 			Console.SetCursorPosition (x, y);
 			Console.Write (sym);
 		}
-
+		 
 		public Point(){
 			Console.WriteLine ("Create a new dot");
 		}

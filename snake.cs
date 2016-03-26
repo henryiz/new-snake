@@ -6,13 +6,32 @@ using System.Threading.Tasks;
 
 namespace Snake
 {
+	/// <summary>
+	/// Firure.
+	/// </summary>
+	public class Firure{
+
+		protected List<Point> plist;
+
+		public void Drow(){
+
+			foreach(Point p in plist){
+
+				p.Draw ();
+
+			}
+
+		} 
+
+	}
+
 
 	/// <summary>
 	/// Class VerticallLine.
 	/// </summary>
-	public class VerticalLine
+	public class VerticalLine : Firure
 	{
-		List<Point> plist;
+ 
 		public VerticalLine(int yLeft, int yRight, int x, char sym){    
 
 			plist = new List<Point>();
@@ -23,23 +42,15 @@ namespace Snake
 			}
 
 		}
-		public void Drow(){
-
-			foreach(Point p in plist){
-
-				p.Draw ();
-
-			}
-
-		}
+ 
 	}
 
 	/// <summary>
 	/// Class HorizontalLine
 	/// </summary>
-	public class HorizontalLine
+	public class HorizontalLine : Firure
 	{
-		List<Point> plist;
+		 
 		public HorizontalLine(int xLeft, int xRight, int y, char sym){
 		
 			plist = new List<Point>();
@@ -50,15 +61,7 @@ namespace Snake
 			}
 			
 		}
-		public void Drow(){
-		
-			foreach(Point p in plist){
-
-				p.Draw ();
-
-			}
-		
-		}
+ 
 	}
 
 
@@ -97,12 +100,20 @@ namespace Snake
 		static void Main()
 		{
 
-			HorizontalLine line = new HorizontalLine (5, 10, 25, '+');
-			line.Drow ();
-		 
-			VerticalLine line2 = new VerticalLine (5, 10, 0, '+');
-			line2.Drow ();
+			//Console.SetBufferSize (80, 25);
 
+			HorizontalLine line_top = new HorizontalLine (0, 78, 0, '+');
+			line_top.Drow ();
+			HorizontalLine line_bottom = new HorizontalLine (0, 78, 24, '+');
+			line_bottom.Drow ();
+
+			VerticalLine line_left = new VerticalLine (0, 24, 0, '+');
+			line_left.Drow ();
+			VerticalLine line_right = new VerticalLine (0, 24, 78, '+');
+			line_right.Drow ();
+
+			Point p = new Point (4,5,'*');
+			p.Draw ();
 
 			Console.ReadLine ();
 

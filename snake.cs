@@ -6,6 +6,30 @@ using System.Threading.Tasks;
 
 namespace Snake
 {
+	enum Direction{
+		LEFT,
+		RIGHT,
+		UP,
+		DOWN
+	}
+
+	/// <summary>
+	/// Snake.
+	/// </summary>
+	public class Snake : Firure
+	{
+
+		public Snake(Point tail, int lenght, Direction direction){
+
+			//plist = new List<Point>();
+			//for(int i = 0; i < lenght; i++){
+				//Point p = new Point (tail);
+				//p.Move (i, direction);
+				//plist.Add (p);
+			}
+
+		}
+	}
 	/// <summary>
 	/// Firure.
 	/// </summary>
@@ -80,15 +104,30 @@ namespace Snake
 			Console.Write (sym);
 		}
 		 
-		public Point(){
-			Console.WriteLine ("Create a new dot");
+		public Point(Point p){
+			x = p.x;
+			y = p.y;
+			sym = p.sym;
 		}
 		public Point(int _x, int _y, char _sym){
 			x = _x;
 			y = _y;
 			sym = _sym;
 		}
-
+		public void Move(int offset, Direction direction){
+			if(direction == Direction.RIGHT){
+				x = x + offset;
+			}
+			else if(direction == Direction.LEFT){
+				x = x - offset;
+			}
+			else if(direction == Direction.UP){
+				y = y + offset;
+			}
+			else if(direction == Direction.DOWN){
+				y = y - offset;
+			}
+		}
 	}
 
 	/// <summary>
@@ -113,12 +152,12 @@ namespace Snake
 			line_right.Drow ();
 
 			Point p = new Point (4,5,'*');
-			p.Draw ();
+			Snake snake = new Snake (p, 4, Direction.RIGHT);
+
 
 			Console.ReadLine ();
 
 
 		}
 		 
-}
 }

@@ -3,37 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 
 namespace Snake
 {
-	enum Direction{
+	enum Direction{ 
 		LEFT,
 		RIGHT,
 		UP,
 		DOWN
 	}
 
-	/// <summary>
-	/// Snake.
-	/// </summary>
-	public class Snake : Firure
-	{
 
-		public Snake(Point tail, int lenght, Direction direction){
-
-			//plist = new List<Point>();
-			//for(int i = 0; i < lenght; i++){
-				//Point p = new Point (tail);
-				//p.Move (i, direction);
-				//plist.Add (p);
-			}
-
-		}
-	}
 	/// <summary>
 	/// Firure.
 	/// </summary>
-	public class Firure{
+	class Firure{
 
 		protected List<Point> plist;
 
@@ -51,48 +36,9 @@ namespace Snake
 
 
 	/// <summary>
-	/// Class VerticallLine.
-	/// </summary>
-	public class VerticalLine : Firure
-	{
- 
-		public VerticalLine(int yLeft, int yRight, int x, char sym){    
-
-			plist = new List<Point>();
-			for(int y = yLeft; y<=yRight; y++){
-
-				Point p = new Point (x, y, sym);
-				plist.Add (p);
-			}
-
-		}
- 
-	}
-
-	/// <summary>
-	/// Class HorizontalLine
-	/// </summary>
-	public class HorizontalLine : Firure
-	{
-		 
-		public HorizontalLine(int xLeft, int xRight, int y, char sym){
-		
-			plist = new List<Point>();
-			for(int x = xLeft; x<=xRight; x++){
-
-				Point p = new Point (x, y, sym);
-				plist.Add (p);
-			}
-			
-		}
- 
-	}
-
-
-	/// <summary>
 	/// Class Point
 	/// </summary>
-	public class Point
+	class Point
 	{
 		public int x;
 		public int y;
@@ -103,7 +49,7 @@ namespace Snake
 			Console.SetCursorPosition (x, y);
 			Console.Write (sym);
 		}
-		 
+
 		public Point(Point p){
 			x = p.x;
 			y = p.y;
@@ -128,7 +74,95 @@ namespace Snake
 				y = y - offset;
 			}
 		}
+		public void Clear(){
+			sym = ' ';
+			Draw ();
+		}
 	}
+
+
+	/// <summary>
+	/// Snake.
+	/// </summary>
+	class Snake : Firure
+	{
+
+		Direction direction;
+
+		public Snake(Point tail, int lenght, Direction _direction){
+
+			direction = _direction;
+
+			plist = new List<Point>();
+			for(int i = 0; i < lenght; i++){
+				Point p = new Point (tail);
+				p.Move (i, direction);
+				plist.Add (p);
+			}
+
+		}
+
+		internal void Move(){
+
+			Point tail = plist.First ();
+			plist.Remove (tail);
+			Point head = GetNextPoint ();
+			plist.Add (head);
+
+			tail.Clear ();
+			head.Draw ();
+		}
+
+		public Point GetNextPoint(){
+			Point head = plist.Last ();
+			Point nextPoint = new Point (head);
+			nextPoint.Move (1, direction);
+			return nextPoint;
+		}
+
+	}
+
+	/// <summary>
+	/// Class VerticallLine.
+	/// </summary>
+	class VerticalLine : Firure
+	{
+ 
+		public VerticalLine(int yLeft, int yRight, int x, char sym){    
+
+			plist = new List<Point>();
+			for(int y = yLeft; y<=yRight; y++){
+
+				Point p = new Point (x, y, sym);
+				plist.Add (p);
+			}
+
+		}
+ 
+	}
+
+	/// <summary>
+	/// Class HorizontalLine
+	/// </summary>
+	class HorizontalLine : Firure
+	{
+		 
+		public HorizontalLine(int xLeft, int xRight, int y, char sym){
+		
+			plist = new List<Point>();
+			for(int x = xLeft; x<=xRight; x++){
+
+				Point p = new Point (x, y, sym);
+				plist.Add (p);
+			}
+			
+		}
+ 
+	}
+
+	
+ 
+
 
 	/// <summary>
 	/// Class Program
@@ -153,11 +187,50 @@ namespace Snake
 
 			Point p = new Point (4,5,'*');
 			Snake snake = new Snake (p, 4, Direction.RIGHT);
+			snake.Drow ();
+			snake.Move ();
+			Thread.Sleep (400);
+			snake.Move ();
+			Thread.Sleep (400);
+			snake.Move ();
+			Thread.Sleep (400);
+			snake.Move ();
+			Thread.Sleep (400);
+			snake.Move ();
+			Thread.Sleep (400);
+			snake.Move ();
+			Thread.Sleep (400);
+			snake.Move ();
+			Thread.Sleep (400);
+			snake.Move ();
+			Thread.Sleep (400);
+			snake.Move ();
+			Thread.Sleep (400);
+			snake.Move ();
+			Thread.Sleep (400);
+			snake.Move ();
+			Thread.Sleep (400);
+			snake.Move ();
+			Thread.Sleep (400);
+			snake.Move ();
+			Thread.Sleep (400);
+			snake.Move ();
+			Thread.Sleep (400);
+			snake.Move ();
+			Thread.Sleep (400);
+			snake.Move ();
+			Thread.Sleep (400);
+			snake.Move ();
 
 
+			 
+		 
+		 
 			Console.ReadLine ();
 
 
 		}
 		 
+}
+
 }

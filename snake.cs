@@ -68,10 +68,10 @@ namespace Snake
 				x = x - offset;
 			}
 			else if(direction == Direction.UP){
-				y = y + offset;
+				y = y - offset;
 			}
 			else if(direction == Direction.DOWN){
-				y = y - offset;
+				y = y + offset;
 			}
 		}
 		public void Clear(){
@@ -118,6 +118,18 @@ namespace Snake
 			Point nextPoint = new Point (head);
 			nextPoint.Move (1, direction);
 			return nextPoint;
+		}
+
+		public void HandleKey(ConsoleKey key){
+
+			if (key == ConsoleKey.LeftArrow) 
+				direction = Direction.LEFT;
+			else if (key == ConsoleKey.RightArrow)
+				direction = Direction.RIGHT;
+			else if (key == ConsoleKey.DownArrow)
+				direction = Direction.DOWN;
+			else if (key == ConsoleKey.UpArrow)
+				direction = Direction.UP;
 		}
 
 	}
@@ -188,45 +200,22 @@ namespace Snake
 			Point p = new Point (4,5,'*');
 			Snake snake = new Snake (p, 4, Direction.RIGHT);
 			snake.Drow ();
-			snake.Move ();
-			Thread.Sleep (400);
-			snake.Move ();
-			Thread.Sleep (400);
-			snake.Move ();
-			Thread.Sleep (400);
-			snake.Move ();
-			Thread.Sleep (400);
-			snake.Move ();
-			Thread.Sleep (400);
-			snake.Move ();
-			Thread.Sleep (400);
-			snake.Move ();
-			Thread.Sleep (400);
-			snake.Move ();
-			Thread.Sleep (400);
-			snake.Move ();
-			Thread.Sleep (400);
-			snake.Move ();
-			Thread.Sleep (400);
-			snake.Move ();
-			Thread.Sleep (400);
-			snake.Move ();
-			Thread.Sleep (400);
-			snake.Move ();
-			Thread.Sleep (400);
-			snake.Move ();
-			Thread.Sleep (400);
-			snake.Move ();
-			Thread.Sleep (400);
-			snake.Move ();
-			Thread.Sleep (400);
-			snake.Move ();
 
 
-			 
+		
+			while (true) {
+			
+				if (Console.KeyAvailable) {
+					ConsoleKeyInfo key = Console.ReadKey ();
+					snake.HandleKey (key.Key);
+				}
+				Thread.Sleep (100);
+				snake.Move ();
+			}
+
 		 
 		 
-			Console.ReadLine ();
+			//Console.ReadLine ();
 
 
 		}
